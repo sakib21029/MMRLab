@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+<section style="padding-top:140px;">
+
+
+<div class="container">
+
+
+<h1 class="section-title">
+
+Research Publications
+
+</h1>
+
+
+<p class="text-center mb-5">
+
+Scientific contributions from MMR Lab researchers.
+
+</p>
+
+
+
+
+
+<div class="row">
+
+
+
+{% for paper in publications %}
+
+
+
+<div class="col-md-6 mb-4">
+
+
+<div class="research-card">
+
+
+
+<h3>
+
+{{ paper.title }}
+
+</h3>
+
+
+
+<p>
+
+<strong>
+Authors:
+</strong>
+
+<br>
+
+{{ paper.authors }}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Journal:
+</strong>
+
+{{ paper.journal }}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Publication Year:
+</strong>
+
+{{ paper.year }}
+
+</p>
+
+
+
+{% if paper.research_area %}
+
+<p>
+
+<strong>
+Research Area:
+</strong>
+
+{{ paper.research_area }}
+
+</p>
+
+{% endif %}
+
+
+
+{% if paper.abstract %}
+
+<p>
+
+{{ paper.abstract|truncatewords:40 }}
+
+</p>
+
+{% endif %}
+
+
+
+
+{% if paper.doi %}
+
+
+<a href="{{ paper.doi }}"
+target="_blank"
+class="btn-main">
+
+View DOI
+
+</a>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% empty %}
+
+
+
+<div class="text-center">
+
+
+<p>
+
+No publications added yet.
+
+</p>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

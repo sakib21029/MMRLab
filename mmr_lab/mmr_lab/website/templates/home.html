@@ -1,0 +1,840 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+
+<div class="container">
+
+
+<h1>
+
+Molecular & Microbiology
+Research Laboratory
+
+</h1>
+
+
+<p>
+
+Advancing molecular discoveries,
+microbial research and biomedical innovation
+for global health challenges.
+
+</p>
+
+
+
+<div class="hero-btn">
+
+
+<a href="#research">
+
+Explore Research
+
+</a>
+
+
+
+<a href="/people/">
+
+Meet Our Team
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- SUPERVISOR SECTION -->
+
+
+<section>
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Principal Investigator
+
+</h2>
+
+
+
+{% if supervisor %}
+
+
+<div class="supervisor-card">
+
+
+<div>
+
+
+<img src="{{ supervisor.photo.url }}"
+alt="{{ supervisor.name }}">
+
+
+</div>
+
+
+
+<div>
+
+
+<h2>
+
+{{ supervisor.name }}
+
+</h2>
+
+
+
+<h4>
+
+{{ supervisor.designation }}
+
+</h4>
+
+
+
+<p>
+
+{{ supervisor.bio }}
+
+</p>
+
+
+
+<h4>
+
+Research Vision
+
+</h4>
+
+
+<p>
+
+{{ supervisor.vision }}
+
+</p>
+
+
+
+<h4>
+
+Research Mission
+
+</h4>
+
+
+<p>
+
+{{ supervisor.mission }}
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- RESEARCH AREAS -->
+
+
+<section id="research"
+style="background:#f7fafc;">
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Our Research Areas
+
+</h2>
+
+
+
+<div class="row">
+
+
+{% for area in research_areas %}
+
+
+
+<div class="col-md-3 mb-4">
+
+
+<div class="research-card">
+
+
+<h3>
+
+{{ area.icon }}
+
+{{ area.title }}
+
+</h3>
+
+
+
+<p>
+
+{{ area.description }}
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+{% empty %}
+
+
+
+<div class="text-center">
+
+<p>
+Research areas will be updated soon.
+</p>
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ABOUT SECTION -->
+
+
+<section>
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+About MMR Lab
+
+</h2>
+
+
+<div class="row align-items-center">
+
+
+
+<div class="col-md-6">
+
+
+<p>
+
+MMR Lab is a multidisciplinary research laboratory
+focused on molecular biology, microbiology,
+biomedical research and antimicrobial discovery.
+
+</p>
+
+
+
+<p>
+
+Our mission is to understand biological systems
+and translate scientific discoveries into solutions
+for human health.
+
+</p>
+
+
+
+</div>
+
+
+
+<div class="col-md-6">
+
+
+<img src="/static/images/lab.jpg"
+
+class="img-fluid rounded"
+
+alt="Laboratory">
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- TEAM PREVIEW -->
+
+
+<section style="background:#f7fafc;">
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Our Team
+
+</h2>
+
+
+
+<div class="row">
+
+
+
+{% for member in members %}
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="member-card">
+
+
+
+{% if member.photo %}
+
+
+<img src="{{ member.photo.url }}">
+
+
+{% endif %}
+
+
+
+<h3>
+
+{{ member.name }}
+
+</h3>
+
+
+<p>
+
+{{ member.get_role_display }}
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+<div class="text-center mt-4">
+
+
+<a href="/people/" class="btn-main">
+
+View All Members
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PROJECTS -->
+
+
+<section>
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Research Projects
+
+</h2>
+
+
+
+<div class="row">
+
+
+
+{% for project in projects %}
+
+
+<div class="col-md-4">
+
+
+<div class="research-card">
+
+
+<h3>
+
+{{ project.title }}
+
+</h3>
+
+
+<p>
+
+{{ project.description|truncatewords:25 }}
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p>
+
+Projects will be updated soon.
+
+</p>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- PUBLICATIONS -->
+
+
+<section style="background:#f7fafc;">
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Latest Publications
+
+</h2>
+
+
+
+{% for paper in publications %}
+
+
+<div class="mb-3">
+
+
+<h4>
+
+{{ paper.title }}
+
+</h4>
+
+
+<p>
+
+{{ paper.journal }} |
+{{ paper.year }}
+
+</p>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p>
+
+Publications will be updated soon.
+
+</p>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- NEWS -->
+
+
+<section>
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Latest News
+
+</h2>
+
+
+
+{% for item in news %}
+
+
+<div>
+
+
+<h4>
+
+{{ item.title }}
+
+</h4>
+
+
+<p>
+
+{{ item.content|truncatewords:30 }}
+
+</p>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p>
+
+No news available.
+
+</p>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</section>
+
+<!-- RESEARCH STATISTICS -->
+
+
+<section class="statistics-section">
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Research Impact
+
+</h2>
+
+
+
+<div class="row text-center">
+
+
+
+<div class="col-md-3 mb-4">
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-file-lines"></i>
+
+
+<h2>
+25+
+</h2>
+
+
+<p>
+Publications
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-4">
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-flask"></i>
+
+
+<h2>
+10+
+</h2>
+
+
+<p>
+Research Projects
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-4">
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<h2>
+15+
+</h2>
+
+
+<p>
+Researchers
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-4">
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-handshake"></i>
+
+
+<h2>
+5+
+</h2>
+
+
+<p>
+Collaborations
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+<!-- CALL TO ACTION SECTION -->
+
+
+<section class="cta-section">
+
+
+<div class="container text-center">
+
+
+<h2>
+
+Advancing Discoveries
+For A Healthier Future
+
+</h2>
+
+
+
+<p>
+
+MMR Lab is dedicated to innovative research
+in molecular biology, microbiology,
+and biomedical sciences.
+
+</p>
+
+
+
+
+<div class="cta-buttons">
+
+
+<a href="#research"
+class="cta-btn">
+
+Explore Research
+
+</a>
+
+
+
+<a href="/join-us/"
+class="cta-btn outline">
+
+Join Our Lab
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+{% endblock %}

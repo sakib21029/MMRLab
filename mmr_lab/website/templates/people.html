@@ -1,0 +1,431 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+<section style="padding-top:140px;">
+
+
+<div class="container">
+
+
+
+<h1 class="section-title">
+
+MMR Lab People
+
+</h1>
+
+
+
+
+<!-- RESEARCH COLLABORATORS -->
+
+<h2 class="mb-4">
+
+Research Collaborators
+
+</h2>
+
+
+
+<div class="row">
+
+
+{% for member in collaborators %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="member-card">
+
+
+{% if member.photo %}
+
+<img src="{{ member.photo.url }}">
+
+{% endif %}
+
+
+
+<h3>
+
+{{ member.name }}
+
+</h3>
+
+
+
+<p>
+
+{{ member.get_role_display }}
+
+</p>
+
+
+
+<p>
+
+{{ member.research_interest }}
+
+</p>
+
+
+
+<div class="profile-links">
+
+
+{% if member.linkedin %}
+
+<a href="{{ member.linkedin }}">
+LinkedIn
+</a>
+
+{% endif %}
+
+
+
+{% if member.orcid %}
+
+<a href="{{ member.orcid }}">
+ORCID
+</a>
+
+{% endif %}
+
+
+
+{% if member.google_scholar %}
+
+<a href="{{ member.google_scholar }}">
+Scholar
+</a>
+
+{% endif %}
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+{% empty %}
+
+
+<p>
+No collaborators added yet.
+</p>
+
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- RESEARCH ASSISTANTS -->
+
+
+<h2 class="mt-5 mb-4">
+
+Research Assistants
+
+</h2>
+
+
+
+<div class="row">
+
+
+{% for member in assistants %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="member-card">
+
+
+{% if member.photo %}
+
+<img src="{{ member.photo.url }}">
+
+{% endif %}
+
+
+
+<h3>
+
+{{ member.name }}
+
+</h3>
+
+
+
+<p>
+
+{{ member.research_interest }}
+
+</p>
+
+
+<p>
+
+{{ member.biography }}
+
+</p>
+
+
+
+<div class="profile-links">
+
+
+{% if member.linkedin %}
+
+<a href="{{ member.linkedin }}">
+LinkedIn
+</a>
+
+{% endif %}
+
+
+
+{% if member.portfolio %}
+
+<a href="{{ member.portfolio }}">
+Portfolio
+</a>
+
+{% endif %}
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- JUNIOR RESEARCH ASSISTANTS -->
+
+
+<h2 class="mt-5 mb-4">
+
+Junior Research Assistants
+
+</h2>
+
+
+<div class="row">
+
+
+{% for member in junior_assistants %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="member-card">
+
+
+{% if member.photo %}
+
+<img src="{{ member.photo.url }}">
+
+{% endif %}
+
+
+
+<h3>
+
+{{ member.name }}
+
+</h3>
+
+
+
+<p>
+
+{{ member.research_interest }}
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ALUMNI -->
+
+
+<h2 class="mt-5 mb-4">
+
+Alumni
+
+</h2>
+
+
+
+<div class="row">
+
+
+{% for member in alumni %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="member-card">
+
+
+{% if member.photo %}
+
+<img src="{{ member.photo.url }}">
+
+{% endif %}
+
+
+
+<h3>
+
+{{ member.name }}
+
+</h3>
+
+
+
+<p>
+
+Former MMR Lab Member
+
+</p>
+
+
+
+<p>
+
+<strong>
+Current Position:
+</strong>
+
+{{ member.current_position }}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Current Workplace:
+</strong>
+
+{{ member.current_affiliation }}
+
+</p>
+
+
+
+<div class="profile-links">
+
+
+{% if member.linkedin %}
+
+<a href="{{ member.linkedin }}">
+LinkedIn
+</a>
+
+{% endif %}
+
+
+
+{% if member.google_scholar %}
+
+<a href="{{ member.google_scholar }}">
+Scholar
+</a>
+
+{% endif %}
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

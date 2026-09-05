@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mmr-lab
+    runtime: python
+
+    buildCommand: "bash build.sh"
+
+    startCommand: "gunicorn mmr_lab.wsgi:application"
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"

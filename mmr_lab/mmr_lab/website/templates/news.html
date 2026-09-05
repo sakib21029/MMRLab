@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+<section style="padding-top:140px;">
+
+
+<div class="container">
+
+
+
+<h1 class="section-title">
+
+MMR Lab News & Updates
+
+</h1>
+
+
+<p class="text-center mb-5">
+
+Latest activities, achievements and announcements from MMR Lab.
+
+</p>
+
+
+
+
+
+<div class="row">
+
+
+
+{% for item in news %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="research-card">
+
+
+
+{% if item.image %}
+
+<img 
+src="{{ item.image.url }}"
+class="img-fluid rounded mb-3"
+>
+
+{% endif %}
+
+
+
+
+
+<h3>
+
+{{ item.title }}
+
+</h3>
+
+
+
+
+<p>
+
+<small>
+
+{{ item.date }}
+
+</small>
+
+</p>
+
+
+
+
+<p>
+
+{{ item.content }}
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% empty %}
+
+
+
+<div class="text-center">
+
+
+<p>
+
+No news available yet.
+
+</p>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

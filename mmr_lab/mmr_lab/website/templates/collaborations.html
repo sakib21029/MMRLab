@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+<section class="collaboration-page">
+
+
+<div class="container">
+
+
+
+<h1 class="section-title">
+
+Research Collaborations
+
+</h1>
+
+
+
+<p class="text-center intro-text">
+
+MMR Lab collaborates with universities,
+research institutes, healthcare organizations,
+and scientific communities to advance
+innovative biomedical research.
+
+</p>
+
+
+
+
+
+<!-- Collaboration Areas -->
+
+
+<div class="row mt-5">
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="research-card text-center">
+
+
+<h3>
+🎓 Academic Partners
+</h3>
+
+
+<p>
+
+Joint research projects,
+student training,
+and scientific publications.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="research-card text-center">
+
+
+<h3>
+🔬 Research Institutes
+</h3>
+
+
+<p>
+
+Sharing knowledge,
+technology,
+and research resources.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="research-card text-center">
+
+
+<h3>
+🏥 Healthcare Partners
+</h3>
+
+
+<p>
+
+Translational research
+for improved healthcare solutions.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PARTNERS -->
+
+
+<section class="mt-5">
+
+
+<h2 class="section-title">
+
+Our Collaborators
+
+</h2>
+
+
+
+<div class="row justify-content-center">
+
+
+
+{% for partner in collaborations %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="research-card text-center">
+
+
+
+{% if partner.logo %}
+
+
+<img src="{{ partner.logo.url }}"
+class="partner-logo">
+
+
+{% endif %}
+
+
+
+<h4>
+
+{{ partner.institution }}
+
+</h4>
+
+
+
+<p>
+
+{{ partner.country }}
+
+</p>
+
+
+
+{% if partner.website %}
+
+<a href="{{ partner.website }}"
+target="_blank"
+class="btn-main">
+
+Visit Website
+
+</a>
+
+{% endif %}
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% empty %}
+
+
+
+<div class="text-center">
+
+
+<p>
+
+Collaboration partners will be added soon.
+
+</p>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- JOIN COLLABORATION -->
+
+
+<section class="mt-5">
+
+
+<div class="research-card text-center">
+
+
+<h2>
+
+Interested in Collaboration?
+
+</h2>
+
+
+
+<p>
+
+Researchers and institutions interested in
+working with MMR Lab are welcome to contact us.
+
+</p>
+
+
+
+<a href="/join-us/"
+class="btn-main">
+
+Contact MMR Lab
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}
