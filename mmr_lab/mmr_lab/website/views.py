@@ -10,24 +10,14 @@ from .models import (
 )
 
 
-# =========================
-# HOME PAGE
-# =========================
-
 def home(request):
 
     supervisor = Supervisor.objects.first()
-
     research_areas = ResearchArea.objects.all()
-
     members = Member.objects.all()[:6]
-
     projects = Project.objects.all()[:3]
-
     publications = Publication.objects.all()[:5]
-
     news = News.objects.all()[:3]
-
 
     context = {
         "supervisor": supervisor,
@@ -38,7 +28,6 @@ def home(request):
         "news": news,
     }
 
-
     return render(
         request,
         "home.html",
@@ -46,85 +35,57 @@ def home(request):
     )
 
 
-# =========================
-# PEOPLE PAGE
-# =========================
-
 def people(request):
 
     members = Member.objects.all()
 
-    context = {
-        "members": members,
-    }
-
     return render(
         request,
         "people.html",
-        context
+        {
+            "members": members
+        }
     )
 
-
-# =========================
-# PUBLICATIONS PAGE
-# =========================
 
 def publications(request):
 
     publications_list = Publication.objects.all().order_by("-year")
 
-    context = {
-        "publications": publications_list,
-    }
-
     return render(
         request,
         "publications.html",
-        context
+        {
+            "publications": publications_list
+        }
     )
 
-
-# =========================
-# PROJECTS PAGE
-# =========================
 
 def projects(request):
 
     projects_list = Project.objects.all()
 
-    context = {
-        "projects": projects_list,
-    }
-
     return render(
         request,
         "projects.html",
-        context
+        {
+            "projects": projects_list
+        }
     )
 
-
-# =========================
-# NEWS PAGE
-# =========================
 
 def news(request):
 
     news_list = News.objects.all()
 
-    context = {
-        "news": news_list,
-    }
-
     return render(
         request,
         "news.html",
-        context
+        {
+            "news": news_list
+        }
     )
 
-
-# =========================
-# COLLABORATIONS PAGE
-# =========================
 
 def collaborations(request):
 
@@ -133,10 +94,6 @@ def collaborations(request):
         "collaborations.html"
     )
 
-
-# =========================
-# JOIN US PAGE
-# =========================
 
 def join_us(request):
 
