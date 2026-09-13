@@ -8,4 +8,5 @@ python manage.py migrate
 echo "ADMIN SCRIPT STARTING"
 python create_admin.py
 
-python manage.py collectstatic --no-input
+python manage.py collectstatic --no-inputgit commit -m "Fix build.sh syntax error and set executable permissions"
+git push origin main

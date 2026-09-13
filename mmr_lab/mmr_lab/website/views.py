@@ -30,19 +30,12 @@ def home(request):
 
 
     context = {
-
         "supervisor": supervisor,
-
         "research_areas": research_areas,
-
         "members": members,
-
         "projects": projects,
-
         "publications": publications,
-
         "news": news,
-
     }
 
 
@@ -51,7 +44,6 @@ def home(request):
         "home.html",
         context
     )
-
 
 
 # =========================
@@ -73,7 +65,6 @@ def people(request):
     )
 
 
-
 # =========================
 # PUBLICATIONS PAGE
 # =========================
@@ -91,7 +82,6 @@ def publications(request):
         "publications.html",
         context
     )
-
 
 
 # =========================
@@ -113,7 +103,6 @@ def projects(request):
     )
 
 
-
 # =========================
 # NEWS PAGE
 # =========================
@@ -133,7 +122,6 @@ def news(request):
     )
 
 
-
 # =========================
 # COLLABORATIONS PAGE
 # =========================
@@ -144,7 +132,6 @@ def collaborations(request):
         request,
         "collaborations.html"
     )
-
 
 
 # =========================

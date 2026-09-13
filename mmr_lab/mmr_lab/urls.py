@@ -1,18 +1,49 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 
 urlpatterns = [
 
     path(
-        'admin/',
-        admin.site.urls
+        "",
+        views.home,
+        name="home"
     ),
 
+    path(
+        "people/",
+        views.people,
+        name="people"
+    ),
 
     path(
-        '',
-        include('website.urls')
+        "publications/",
+        views.publications,
+        name="publications"
+    ),
+
+    path(
+        "projects/",
+        views.projects,
+        name="projects"
+    ),
+
+    path(
+        "news/",
+        views.news,
+        name="news"
+    ),
+
+    path(
+        "collaborations/",
+        views.collaborations,
+        name="collaborations"
+    ),
+
+    path(
+        "join-us/",
+        views.join_us,
+        name="join_us"
     ),
 
 ]
