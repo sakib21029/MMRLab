@@ -1,8 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth import get_user_model
 
-# Import models from your app (adjust model names if your models differ)
 from .models import (
     Supervisor,
     ResearchArea,
@@ -13,53 +10,150 @@ from .models import (
 )
 
 
+# =========================
+# HOME PAGE
+# =========================
+
 def home(request):
-    # Fetch data to populate home.html
-    supervisor = Supervisor.objects.first() if hasattr(Supervisor, 'objects') else None
-    research_areas = ResearchArea.objects.all() if hasattr(ResearchArea, 'objects') else []
-    members = Member.objects.all()[:6] if hasattr(Member, 'objects') else []
-    projects = Project.objects.all()[:3] if hasattr(Project, 'objects') else []
-    publications = Publication.objects.all()[:5] if hasattr(Publication, 'objects') else []
-    news = News.objects.all()[:3] if hasattr(News, 'objects') else []
+
+    supervisor = Supervisor.objects.first()
+
+    research_areas = ResearchArea.objects.all()
+
+    members = Member.objects.all()[:6]
+
+    projects = Project.objects.all()[:3]
+
+    publications = Publication.objects.all()[:5]
+
+    news = News.objects.all()[:3]
+
 
     context = {
+
         "supervisor": supervisor,
+
         "research_areas": research_areas,
+
         "members": members,
+
         "projects": projects,
+
         "publications": publications,
+
         "news": news,
+
     }
-    return render(request, "home.html", context)
 
 
-def publications(request):
-    publications_list = Publication.objects.all().order_by("-year") if hasattr(Publication, 'objects') else []
-    return render(request, "publications.html", {"publications": publications_list})
-
-
-def people(request):
-    members = Member.objects.all() if hasattr(Member, 'objects') else []
-    return render(request, "people.html", {"members": members})
-
-
-def join_us(request):
-    return render(request, "join_us.html")
-
-
-def create_admin(request):
-    User = get_user_model()
-
-    user, created = User.objects.get_or_create(
-        username="admin",
-        defaults={
-            "email": "sakib.towhidujjaman@gmail.com"
-        }
+    return render(
+        request,
+        "home.html",
+        context
     )
 
-    user.set_password("mmrlab@123")
-    user.is_staff = True
-    user.is_superuser = True
-    user.save()
 
-    return HttpResponse("Admin created successfully")
+
+# =========================
+# PEOPLE PAGE
+# =========================
+
+def people(request):
+
+    members = Member.objects.all()
+
+    context = {
+        "members": members,
+    }
+
+    return render(
+        request,
+        "people.html",
+        context
+    )
+
+
+
+# =========================
+# PUBLICATIONS PAGE
+# =========================
+
+def publications(request):
+
+    publications_list = Publication.objects.all().order_by("-year")
+
+    context = {
+        "publications": publications_list,
+    }
+
+    return render(
+        request,
+        "publications.html",
+        context
+    )
+
+
+
+# =========================
+# PROJECTS PAGE
+# =========================
+
+def projects(request):
+
+    projects_list = Project.objects.all()
+
+    context = {
+        "projects": projects_list,
+    }
+
+    return render(
+        request,
+        "projects.html",
+        context
+    )
+
+
+
+# =========================
+# NEWS PAGE
+# =========================
+
+def news(request):
+
+    news_list = News.objects.all()
+
+    context = {
+        "news": news_list,
+    }
+
+    return render(
+        request,
+        "news.html",
+        context
+    )
+
+
+
+# =========================
+# COLLABORATIONS PAGE
+# =========================
+
+def collaborations(request):
+
+    return render(
+        request,
+        "collaborations.html"
+    )
+
+
+
+# =========================
+# JOIN US PAGE
+# =========================
+
+def join_us(request):
+
+    return render(
+        request,
+        "join_us.html"
+    )

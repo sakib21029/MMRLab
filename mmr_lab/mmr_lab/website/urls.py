@@ -1,18 +1,62 @@
 from django.urls import path
-from .views import (
-    home, 
-    create_admin, 
-    publications, 
-    people, 
-    join_us
-)
+from . import views
+
 
 urlpatterns = [
-    path("", home, name="home"),
-    path("create-admin/", create_admin, name="create_admin"),
-    
-    # Add routes for the missing pages:
-    path("publications/", publications, name="publications"),
-    path("people/", people, name="people"),
-    path("join-us/", join_us, name="join_us"),
+
+    # Home
+    path(
+        "",
+        views.home,
+        name="home"
+    ),
+
+
+    # People
+    path(
+        "people/",
+        views.people,
+        name="people"
+    ),
+
+
+    # Publications
+    path(
+        "publications/",
+        views.publications,
+        name="publications"
+    ),
+
+
+    # Projects
+    path(
+        "projects/",
+        views.projects,
+        name="projects"
+    ),
+
+
+    # News
+    path(
+        "news/",
+        views.news,
+        name="news"
+    ),
+
+
+    # Collaborations
+    path(
+        "collaborations/",
+        views.collaborations,
+        name="collaborations"
+    ),
+
+
+    # Join Us
+    path(
+        "join-us/",
+        views.join_us,
+        name="join_us"
+    ),
+
 ]
